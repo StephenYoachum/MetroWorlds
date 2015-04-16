@@ -8,10 +8,10 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("WorldsAwayDemo")> 
-<Assembly: AssemblyDescription("")> 
+<Assembly: AssemblyTitle("MetroWorlds' Developers' Demonstration")> 
+<Assembly: AssemblyDescription("Application demonstrates the use of the wadapi.dll to interact with the WorldsAway client software for 3rd party application development. This software was created and compiled using Visual Studios 2013 Community Edition. The source code for this software is released under the MIT license and is available for download at: https://github.com/stephenyoachum/metroworlds")> 
 <Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("WorldsAwayDemo")> 
+<Assembly: AssemblyProduct("API Demonstration for Visual Basic .NET")> 
 <Assembly: AssemblyCopyright("Copyright ©  2015")> 
 <Assembly: AssemblyTrademark("")> 
 
