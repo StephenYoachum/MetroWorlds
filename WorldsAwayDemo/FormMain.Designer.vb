@@ -10,7 +10,6 @@ Partial Class FormMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Me.txtChat = New System.Windows.Forms.TextBox()
         Me.radMode1 = New System.Windows.Forms.RadioButton()
         Me.radMode2 = New System.Windows.Forms.RadioButton()
@@ -18,7 +17,6 @@ Partial Class FormMain
         Me.Label1 = New System.Windows.Forms.Label()
         Me.selAvatar = New System.Windows.Forms.ComboBox()
         Me.txtSend = New System.Windows.Forms.TextBox()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CloseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -199,7 +197,6 @@ Partial Class FormMain
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents selAvatar As System.Windows.Forms.ComboBox
     Friend WithEvents txtSend As System.Windows.Forms.TextBox
-    Friend WithEvents Timer1 As System.Windows.Forms.Timer
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
     Friend WithEvents FileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents WindowToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
