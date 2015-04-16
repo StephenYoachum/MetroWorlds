@@ -18,7 +18,6 @@ Partial Class FormMain
         Me.Label1 = New System.Windows.Forms.Label()
         Me.selAvatar = New System.Windows.Forms.ComboBox()
         Me.txtSend = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -27,18 +26,15 @@ Partial Class FormMain
         Me.AlwaysOnTopToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.btnGetAllText = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'txtChat
         '
         Me.txtChat.BackColor = System.Drawing.SystemColors.Window
-        Me.txtChat.Location = New System.Drawing.Point(12, 77)
+        Me.txtChat.Location = New System.Drawing.Point(12, 57)
         Me.txtChat.Multiline = True
         Me.txtChat.Name = "txtChat"
         Me.txtChat.ReadOnly = True
@@ -50,7 +46,7 @@ Partial Class FormMain
         '
         Me.radMode1.Appearance = System.Windows.Forms.Appearance.Button
         Me.radMode1.Checked = True
-        Me.radMode1.Location = New System.Drawing.Point(465, 291)
+        Me.radMode1.Location = New System.Drawing.Point(465, 271)
         Me.radMode1.Name = "radMode1"
         Me.radMode1.Size = New System.Drawing.Size(46, 24)
         Me.radMode1.TabIndex = 4
@@ -61,7 +57,7 @@ Partial Class FormMain
         'radMode2
         '
         Me.radMode2.Appearance = System.Windows.Forms.Appearance.Button
-        Me.radMode2.Location = New System.Drawing.Point(510, 291)
+        Me.radMode2.Location = New System.Drawing.Point(510, 271)
         Me.radMode2.Name = "radMode2"
         Me.radMode2.Size = New System.Drawing.Size(46, 24)
         Me.radMode2.TabIndex = 5
@@ -71,7 +67,7 @@ Partial Class FormMain
         'radMode3
         '
         Me.radMode3.Appearance = System.Windows.Forms.Appearance.Button
-        Me.radMode3.Location = New System.Drawing.Point(555, 291)
+        Me.radMode3.Location = New System.Drawing.Point(555, 271)
         Me.radMode3.Name = "radMode3"
         Me.radMode3.Size = New System.Drawing.Size(37, 24)
         Me.radMode3.TabIndex = 6
@@ -82,7 +78,7 @@ Partial Class FormMain
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(9, 294)
+        Me.Label1.Location = New System.Drawing.Point(9, 274)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(26, 13)
         Me.Label1.TabIndex = 7
@@ -91,27 +87,18 @@ Partial Class FormMain
         'selAvatar
         '
         Me.selAvatar.FormattingEnabled = True
-        Me.selAvatar.Location = New System.Drawing.Point(34, 291)
+        Me.selAvatar.Location = New System.Drawing.Point(34, 271)
         Me.selAvatar.Name = "selAvatar"
         Me.selAvatar.Size = New System.Drawing.Size(135, 21)
         Me.selAvatar.TabIndex = 8
         '
         'txtSend
         '
-        Me.txtSend.Location = New System.Drawing.Point(170, 291)
+        Me.txtSend.Location = New System.Drawing.Point(170, 271)
         Me.txtSend.Multiline = True
         Me.txtSend.Name = "txtSend"
         Me.txtSend.Size = New System.Drawing.Size(294, 20)
         Me.txtSend.TabIndex = 1
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(12, 334)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 9
-        Me.Button1.Text = "Start"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'MenuStrip1
         '
@@ -161,60 +148,33 @@ Partial Class FormMain
         Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(93, 333)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(99, 23)
-        Me.Button2.TabIndex = 11
-        Me.Button2.Text = "Button2"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(189, 335)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(165, 20)
-        Me.TextBox1.TabIndex = 12
-        '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(94, 362)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(98, 23)
-        Me.Button3.TabIndex = 13
-        Me.Button3.Text = "Button3"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
         'btnGetAllText
         '
-        Me.btnGetAllText.Location = New System.Drawing.Point(362, 48)
+        Me.btnGetAllText.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnGetAllText.Location = New System.Drawing.Point(395, 31)
         Me.btnGetAllText.Name = "btnGetAllText"
-        Me.btnGetAllText.Size = New System.Drawing.Size(114, 23)
+        Me.btnGetAllText.Size = New System.Drawing.Size(197, 23)
         Me.btnGetAllText.TabIndex = 14
-        Me.btnGetAllText.Text = "Capture Chat Text"
+        Me.btnGetAllText.Text = "Capture Chat"
         Me.btnGetAllText.UseVisualStyleBackColor = True
         '
-        'Button5
+        'Label2
         '
-        Me.Button5.Location = New System.Drawing.Point(441, 337)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(75, 23)
-        Me.Button5.TabIndex = 15
-        Me.Button5.Text = "Button5"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(12, 34)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(357, 20)
+        Me.Label2.TabIndex = 15
+        Me.Label2.Text = "MetroWorlds' Developer API Demonstration"
         '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(604, 395)
-        Me.Controls.Add(Me.Button5)
+        Me.ClientSize = New System.Drawing.Size(604, 300)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.btnGetAllText)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.txtSend)
         Me.Controls.Add(Me.selAvatar)
         Me.Controls.Add(Me.Label1)
@@ -239,7 +199,6 @@ Partial Class FormMain
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents selAvatar As System.Windows.Forms.ComboBox
     Friend WithEvents txtSend As System.Windows.Forms.TextBox
-    Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
     Friend WithEvents FileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -247,10 +206,7 @@ Partial Class FormMain
     Friend WithEvents AlwaysOnTopToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents CloseToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents btnGetAllText As System.Windows.Forms.Button
-    Friend WithEvents Button5 As System.Windows.Forms.Button
+    Friend WithEvents Label2 As System.Windows.Forms.Label
 End Class
