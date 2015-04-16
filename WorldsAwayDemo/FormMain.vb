@@ -21,19 +21,8 @@ Public Class FormMain
 
     Dim Mode As Communicate = Communicate.Speak
 
-    Private Sub MainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        Dim rslt As MsgBoxResult
-        rslt = MsgBox("Are you sure you wish to exit?", MsgBoxStyle.OkCancel)
-        If (rslt = MsgBoxResult.Cancel) Then
-            e.Cancel = True
-        Else
-            DapiUnregister(Application.ProductName)
-            KillDDE()
-        End If
-    End Sub
-
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Prepare Control Properties and Appearence Styles
+        ' prepare control properties and appearence styles
         txtChat.ReadOnly = True
         txtChat.BackColor = Color.White
 
@@ -43,9 +32,39 @@ Public Class FormMain
         Change_Communication_Mode(Communicate.Speak)
         txtChat.Text = Application.ProductName
 
+        ' initialize dde
         Dim rslt As Integer = InitDDE(Application.ProductName, ProcessAckDataCallback, ProcessReceiveDataCallback, ProcessGetAllTextCallback)
-        DapiRegister(Application.ProductName)
 
+        ' register application with wa client
+        DapiRegister(Application.ProductName)
+    End Sub
+
+    Private Sub MainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        ' verify close form user action
+        Dim rslt As MsgBoxResult
+        rslt = MsgBox("Are you sure you wish to exit?", MsgBoxStyle.OkCancel)
+        If (rslt = MsgBoxResult.Cancel) Then
+            e.Cancel = True ' close action cancel
+        Else
+            ' closing application
+            ' unregister application from wa client
+            DapiUnregister(Application.ProductName)
+            ' unintialize dde
+            KillDDE()
+            '' application closed!
+        End If
+    End Sub
+
+    Private Sub ProcessAckData(ByVal sAckData As String)
+
+    End Sub
+
+    Private Sub ProcessReceiveData(ByVal sAvatar As String, ByVal nDataLen As Integer, ByVal sData As String)
+
+    End Sub
+
+    Private Sub ProcessGetAllText(ByVal text As String)
+        txtChat.Text = text
     End Sub
 
     Private Sub Change_Communication_Mode(Mode As Communicate)
@@ -85,33 +104,6 @@ Public Class FormMain
         End If
     End Sub
 
-    Private Sub ProcessAckData(ByVal sAckData As String)
-
-    End Sub
-    Private Sub ProcessReceiveData(ByVal sAvatar As String, ByVal nDataLen As Integer, ByVal sData As String)
-
-    End Sub
-    Private Sub ProcessGetAllText(ByVal text As String)
-        txtChat.Text = text
-    End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If (sender.Text = "Start") Then
-            sender.Text = "Stop"
-            Timer1.Interval = 100
-            Timer1.Start()
-        Else
-            sender.Text = "Start"
-            Timer1.Stop()
-        End If
-    End Sub
-
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        DapiGetAllText(Application.ProductName)
-        txtChat.SelectionStart = txtChat.TextLength
-        txtChat.ScrollToCaret()
-    End Sub
-
     Private Sub AlwaysOnTopToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AlwaysOnTopToolStripMenuItem.Click
         If (sender.checked = False) Then
             sender.checked = True
@@ -131,38 +123,24 @@ Public Class FormMain
 
     Private Sub AvatarList_Add(ByVal text As String)
         For Each avatar As String In selAvatar.Items
+            ' if duplicate avatar name found in AvatarList
             If text.ToLower() = avatar.ToLower() Then
-                Exit Sub
+                Exit Sub ' duplicate not added
             End If
         Next
-        selAvatar.Items.Add(text)
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        ImportFriends(AddressOf AvatarList_Add)
-        'AvatarList_Add(TextBox1.Text)
+        selAvatar.Items.Add(text) ' unique avatar name added
     End Sub
 
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         FormAbout.Visible = True
     End Sub
 
-    Private Sub ToolStripComboBox1_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub CloseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseToolStripMenuItem.Click
         Me.Close()
     End Sub
 
-    Private Sub txtChat_TextChanged(sender As Object, e As EventArgs) Handles txtChat.TextChanged
-
-    End Sub
-
     Private Sub ImportFriends(ByRef cb As AvatarList_AddHandler)
-        '   [Friends]()
-        '   cFriends = 1
-        '   1=Tobias (World Director)
+        ' imports friends list and add avatar names to avatar list
 
         Dim result, count, position As Integer
         Dim sb As StringBuilder = New StringBuilder(500)
@@ -180,18 +158,12 @@ Public Class FormMain
             Loop
         End If
 
-
-    End Sub
-
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        MsgBox(selAvatar.SelectedIndex)
-    End Sub
-
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        DapiGetAllText(Application.ProductName)
     End Sub
 
     Private Sub ParseChat_PrivateMessages(ByRef text As String)
+        ' Function Parses Chat for Sent & Received Private Messages
+        ' Avatar Name of Sender/Receiver are Added to AvatarList
+        ' Message portion of the private message is not used.
         Dim sender, message As String
         Dim position As Integer
         Dim lines As String() = text.Split(vbNewLine)
@@ -201,7 +173,6 @@ Public Class FormMain
             If position < 0 Then Continue For
             sender = line.Substring(0, position)
             message = line.Substring(position + 2)
-
             If sender = "<system>" Then Continue For
             If sender.StartsWith("ESP") Then
                 If sender.StartsWith("ESP to") Then
@@ -211,11 +182,17 @@ Public Class FormMain
                 End If
                 AvatarList_Add(sender)
             End If
-
         Next
     End Sub
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        ParseChat_PrivateMessages(txtChat.Text)
+    Private Sub AvatarList_Refresh()
+        selAvatar.Items.Clear() ' clear avatar list
+        ParseChat_PrivateMessages(txtChat.Text) ' add avatar names from recent private messages
+        ImportFriends(AddressOf AvatarList_Add) ' add friends list
+    End Sub
+
+    Private Sub btnGetAllText_Click(sender As Object, e As EventArgs) Handles btnGetAllText.Click
+        DapiGetAllText(Application.ProductName)
+        AvatarList_Refresh()
     End Sub
 End Class
